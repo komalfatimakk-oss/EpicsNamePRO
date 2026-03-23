@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EpicNames Pro - Stylish & Pro Name Generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ====== BODY & HEADER ====== */
+
+/* ====== RESPONSIVE ====== */
+/* ====== BODY ====== */
+/* ===============================
+   GLOBAL STYLES
+   =============================== */
+/* ====== BODY ====== */
+/* =======================
+   BATTLE GAME DARK THEME
+   ======================= */
+/* ==============================
+   BODY & BACKGROUND
+   ============================== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('https://www.exitlag.com/blog/wp-content/uploads/2025/11/how-to-increase-fps-in-battlefield-6-1024x576.webp') no-repeat center center/cover;
+  color: #e0e0e0;
+  overflow-x: hidden;
+  transition: background 0.5s ease, color 0.5s ease;
+  position: relative;
+}
+
+/* Dark overlay for readability */
+body::before {
+  content: '';
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.65);
+  z-index: -1;
+}
+
+/* ==============================
+   HEADER & NAVIGATION
+   ============================== */
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(15,15,25,0.95);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 2px solid #ff4c00;
+  box-sizing: border-box;
+  z-index: 999;
+}
+
+header h1 {
+  color: #ff4c00;
+  font-size: 2rem;
+  text-shadow: 0 0 8px #ff4c00, 0 0 20px #ff0000;
+  margin: 0;
+}
+
+/* NAV LINKS */
+nav.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+nav.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+nav.nav-links a:hover {
+  color: #ff4c00;
+  text-shadow: 0 0 10px #ff4c00, 0 0 20px #ff0000;
+  background: rgba(255,255,255,0.05);
+}
+
+/* HAMBURGER MENU */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: #ff4c00;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* HAMBURGER ACTIVE (X) */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px){
+  nav.nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(15,15,25,0.95);
+    padding: 1rem 0;
+    z-index: 998;
+  }
+  nav.nav-links.show {
+    display: flex;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* ==============================
+   MAIN SECTIONS
+   ============================== */
+main {
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section {
+  width: 95%;
+  max-width: 750px;
+  background: rgba(20, 20, 30, 0.85);
+  border-radius: 25px;
+  margin: 2rem 0;
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section h2 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2rem;
+  color: #ff4c00;
+  text-shadow: 0 0 8px #ff4c00, 0 0 20px #ff0000;
+  margin-bottom: 2rem;
+}
+
+/* ==============================
+   INPUTS & BUTTONS
+   ============================== */
+input {
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  width: 70%;
+  border-radius: 15px;
+  border: 2px solid #ff4c00;
+  margin-right: 0.5rem;
+  outline: none;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+input:focus {
+  border-color: #ff0000;
+  box-shadow: 0 0 15px #ff4c00, 0 0 25px #ff0000;
+}
+
+button.main-btn {
+  padding: 0.85rem 1.3rem;
+  font-size: 1rem;
+  background: #ff4c00;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(255,76,0,0.6);
+  transition: all 0.3s ease, transform 0.2s ease;
+}
+
+button.main-btn:hover {
+  transform: scale(1.08);
+  background: #ff0000;
+  box-shadow: 0 10px 30px rgba(255,0,0,0.7), 0 0 20px #ff4c00 inset;
+}
+
+/* ==============================
+   NAME LIST
+   ============================== */
+.name-list {
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 5px;
+  scrollbar-width: thin;
+  scrollbar-color: #ff4c00 #111;
+}
+
+.name-list div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.7rem;
+  background: rgba(30,30,40,0.9);
+  border-radius: 18px;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.6);
+  transition: all 0.3s ease, transform 0.3s ease;
+}
+
+.name-list div:hover {
+  transform: translateX(8px);
+  background: #111;
+  box-shadow: 0 0 25px #ff4c00, 0 0 40px #ff0000 inset;
+}
+
+.name-list button.copy-btn {
+  background: #ff4c00;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease, transform 0.2s ease;
+}
+
+.name-list button.copy-btn:hover {
+  background: #ff0000;
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(255,0,0,0.7), 0 0 15px #ff4c00 inset;
+}
+
+/* SCROLLBAR STYLING (Webkit) */
+.name-list::-webkit-scrollbar {
+  width: 8px;
+}
+.name-list::-webkit-scrollbar-track {
+  background: #111;
+  border-radius: 8px;
+}
+.name-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff4c00, #ff0000);
+  border-radius: 8px;
+  box-shadow: 0 0 5px #ff4c00;
+}
+.name-list::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff0000, #ff4c00);
+}
+
+/* ==============================
+   TOGGLE CHECKBOX
+   ============================== */
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.toggle-container input[type="checkbox"] {
+  appearance: none;
+  width: 50px;
+  height: 26px;
+  background: #111;
+  border: 2px solid #ff4c00;
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px #ff4c00 inset;
+}
+
+.toggle-container input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  background: #ff4c00;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px #ff0000, 0 0 12px #ff4c00 inset;
+}
+
+.toggle-container input[type="checkbox"]:checked {
+  background: #111;
+  border-color: #00ffe0;
+  box-shadow: 0 0 12px #00ffe0 inset, 0 0 15px #00ffea;
+}
+
+.toggle-container input[type="checkbox"]:checked::before {
+  left: 26px;
+  background: #00ffe0;
+  box-shadow: 0 0 12px #00ffe0, 0 0 15px #00ffea inset;
+}
+
+.toggle-container label {
+  color: #ff4c00;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem;
+  text-shadow: 0 0 8px #ff4c00, 0 0 12px #ff0000;
+}
+
+/* ==============================
+   POPUPS
+   ============================== */
+#copyPopup, #errorPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: rgba(20,20,30,0.95);
+  color: #ff4c00;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  font-weight: bold;
+  z-index: 9999;
+  pointer-events: none;
+  text-align: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 10px 30px rgba(255,76,0,0.6), 0 0 20px #ff0000 inset;
+}
+
+/* ==============================
+   BACK TO TOP
+   ============================== */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 15px;
+  background: #ff4c00;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 5px 25px rgba(255,76,0,0.6);
+  transition: all 0.3s ease, transform 0.2s ease;
+}
+@media (min-width:768px) {
+  .close-btn{
+    display: none;
+  }
+}
+#backToTop:hover {
+  transform: scale(1.1);
+  background: #ff0000;
+  box-shadow: 0 10px 30px rgba(255,0,0,0.7), 0 0 20px #ff4c00 inset;
+}
+/* Epic glowing Copy & Favorite buttons */
+.name-list button.copy-btn {
+  background: linear-gradient(145deg, #ff4c00, #ff0000);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 700;
+  text-shadow: 0 0 5px #ff4c00, 0 0 10px #ff0000;
+  box-shadow: 0 5px 15px rgba(255,76,0,0.6), 0 0 20px #ff0000 inset;
+  transition: all 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+.name-list button.copy-btn:hover {
+  transform: scale(1.15) rotate(-1deg);
+  background: linear-gradient(145deg, #ff0000, #ff4c00);
+  box-shadow: 0 0 25px #ff4c00, 0 0 40px #ff0000 inset;
+  text-shadow: 0 0 10px #ff4c00, 0 0 20px #ff0000;
+}
+/* COPY BUTTON */
+.name-list button.copy-btn {
+  background: linear-gradient(145deg, #ff4c00, #ff0000);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 700;
+  text-shadow: 0 0 5px #ff4c00, 0 0 10px #ff0000;
+  box-shadow: 0 5px 15px rgba(255,76,0,0.6), 0 0 20px #ff0000 inset;
+  transition: all 0.3s ease, transform 0.2s ease;
+}
+
+.name-list button.copy-btn:hover {
+  transform: scale(1.15) rotate(-1deg);
+  background: linear-gradient(145deg, #ff0000, #ff4c00);
+  box-shadow: 0 0 25px #ff4c00, 0 0 40px #ff0000 inset;
+  text-shadow: 0 0 10px #ff4c00, 0 0 20px #ff0000;
+}
+
+/* FAVORITE BUTTON */
+.name-list button.fav-btn {
+  background: #00ffe0; /* default non-favorited */
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-shadow: 0 0 5px #00ffe0;
+  box-shadow: 0 5px 15px rgba(0,255,224,0.6), 0 0 20px #00ffe0 inset;
+  transition: all 0.3s ease, transform 0.2s ease;
+}
+
+/* FAVORITED STATE */
+.name-list button.fav-btn.favorited {
+  background: #ff4c00;
+  color: #fff;
+  text-shadow: 0 0 8px #ff4c00, 0 0 15px #ff0000;
+  box-shadow: 0 5px 15px rgba(255,76,0,0.6), 0 0 25px #ff0000 inset;
+  animation: pulse 1.2s infinite alternate;
+}
+
+/* Hover effect */
+.name-list button.fav-btn:hover {
+  transform: scale(1.1);
+}
+
+/* PULSE ANIMATION */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 15px #ff4c00, 0 0 25px #ff0000 inset; }
+  50% { transform: scale(1.08); box-shadow: 0 0 25px #ff4c00, 0 0 40px #ff0000 inset; }
+  100% { transform: scale(1); box-shadow: 0 0 15px #ff4c00, 0 0 25px #ff0000 inset; }
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?
+family=Acme&family=Alfa+Slab+One&family=Amatic+SC:wght@400;700&
+family=Antic+Slab&family=Arvo:wght@400;700&
+family=Bangers&family=Bebas+Neue&family=Black+Ops+One&
+family=Bowlby+One+SC&family=Cabin+Sketch:wght@400;700&
+family=Cantarell&family=Caveat:wght@400;700&
+family=Changa+One&family=Chivo:wght@400;700&
+family=Coiny&family=Concert+One&
+family=Comfortaa:wght@400;700&
+family=Contemporary+Serif&family=Corben:wght@400;700&
+family=Courgette&family=Crimson+Text:wght@400;700&
+family=Days+One&family=Delius&family=Delius+Swash+Caps&
+family=Dosis:wght@300;700&
+family=Eater&family=Exo+2:wght@300;700&
+family=Fjalla+One&family=Fresca&
+family=Gelasio:wght@400;700&
+family=Graduate&family=Gruppo&
+family=Hind:wght@400;700&
+family=Indie+Flower&family=Inconsolata:wght@400;700&
+family=Jaldi&family=Jura:wght@400;700&
+family=Kalam:wght@300;700&
+family=Kanit:wght@300;700&
+family=Killigrew&family=Knewave&
+family=Krona+One&family=Lato:wght@400;700&
+family=Libre+Baskerville:wght@400;700&
+family=Luckiest+Guy&family=Lobster&
+family=M+PLUS+Rounded+1c:wght@400;700&
+family=Major+Mono+Display&family=Marck+Script&
+family=Merienda:wght@400;700&
+family=Merriweather:wght@300;700&
+family=Montserrat:wght@400;700&
+family=Nanum+Gothic:wght@400;700&
+family=Neucha&family=Niconne&
+family=Noto+Serif:wght@400;700&
+family=Nunito:wght@400;700&
+family=Orbitron:wght@400;700&
+family=Oswald:wght@400;700&
+family=Overlock:wght@400;700&
+family=Pacifico&family=Passion+One&
+family=Permanent+Marker&family=Poppins:wght@400;700&
+family=PT+Sans:wght@400;700&
+family=Quattrocento+Sans:wght@400;700&
+family=Quicksand:wght@400;700&
+family=Rambla&family=Raleway:wght@400;700&
+family=Reggae+One&family=Righteous&
+family=Roboto:wght@400;700&
+family=Rubik:wght@400;700&
+family=Satisfy&family=Shadows+Into+Light&
+family=Sigmar+One&family=Slabo+27px&
+family=Source+Sans+Pro:wght@400;700&
+family=Staatliches&family=Sunflower:wght@400;700&
+family=Teko:wght@400;700&
+family=Ubuntu:wght@400;700&
+family=Varela+Round&family=Vollkorn:wght@400;700&
+display=swap" rel="stylesheet">
+ <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>EpicNamesPro - Stylish & Pro Name Generator</title>
+  <meta name="description" content="EpicNamesPro - Generate stylish, pro, cute, and random names for YouTube, games, and social media. Easy, fast, and fun!">
+  <meta name="keywords" content="stylish names, pro names, cute names, random names, YouTuber names, name generator, EpicNamesPro">
+  <meta name="author" content="Your Name">
+</head>
+<body>
+<header>
+  <h1>EpicNames Pro</h1>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <nav class="nav-links">
+    <button class="close-btn" onclick="toggleMenu()">✕</button>
+    <a href="#stylish">Stylish</a>
+    <a href="popuplar.html">Popuplar</a>
+    <a href="favoraites.html">favoraites</a>
+    <a href="youtuber.html">YouTuber Name</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<main>
+  <!-- STYLISH -->
+  <section id="stylish">
+    <h2>Stylish Name Generator</h2>
+    <div class="toggle-container">
+      <input type="checkbox" id="plainStylish">
+      <label for="plainStylish">Plain Names (No symbols/brackets)</label>
+    </div>
+    <input id="nameInput" placeholder="Enter your name">
+    <button class="main-btn" onclick="generateStylish()">Generate</button>
+    <div id="outputStylish" class="name-list"></div>
+  </section>
+
+  <!-- PRO -->
+  <section id="pro">
+    <h2>Pro Name Generator</h2>
+    <input id="proInput" placeholder="Enter base name">
+    <button class="main-btn" onclick="generatePro()">Generate</button>
+    <div id="outputPro" class="name-list"></div>
+  </section>
+
+  <!-- CUTE -->
+  <section id="cute">
+    <h2>Cute Name Generator</h2>
+    <input id="cuteInput" placeholder="Enter base name">
+    <button class="main-btn" onclick="generateCute()">Generate</button>
+    <div id="outputCute" class="name-list"></div>
+  </section>
+
+  <!-- RANDOM -->
+  <section id="random">
+    <h2>Random Name Generator</h2>
+    <button class="main-btn" onclick="generateRandom()">Generate Random Names</button>
+    <div id="outputRandom" class="name-list"></div>
+  </section>
+
+  <!-- CATEGORY -->
+  <section id="categories">
+    <h2>Random Character Names</h2>
+    <div class="category-buttons">
+      <button class="main-btn" onclick="generateRandomAnime()">Anime</button>
+      <button class="main-btn" onclick="generateRandomMarvel()">Marvel</button>
+      <button class="main-btn" onclick="generateRandomDC()">DC</button>
+    </div>
+    <div id="outputCategories" class="name-list"></div>
+  </section>
+</main>
+<button id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑ Top</button>
+<div id="copyPopup">Copied!</div>
+<div id="errorPopup">Please enter a name!</div>
+
+<!-- LINK JS FILE HERE -->
+
+<script>
+  // ======================
+// PROFESSIONAL NAME GENERATOR JS
+// ======================
+
+// ===== DATA =====
+// ======================
+// GLOBAL VARIABLES
+// ======================
+const fonts = [
+"Acme","Alfa Slab One","Amatic SC","Antic Slab","Arvo","Bangers",
+"Bebas Neue","Black Ops One","Bowlby One SC","Cabin Sketch","Cantarell",
+"Caveat","Changa One","Chivo","Coiny","Concert One","Comfortaa",
+"Corben","Courgette","Crimson Text","Days One","Delius","Delius Swash Caps",
+"Delius Unicase","Dosis","Eater","Exo 2","Fjalla One","Fresca",
+"Gelasio","Graduate","Gruppo","Hind","Indie Flower","Inconsolata",
+"Jaldi","Jura","Kalam","Kanit","Killigrew","Knewave","Krona One",
+"Lato","Libre Baskerville","Luckiest Guy","Lobster","M PLUS Rounded 1c",
+"Major Mono Display","Marck Script","Merienda","Merriweather","Montserrat",
+"Nanum Gothic","Neucha","Niconne","Noto Serif","Nunito","Orbitron",
+"Oswald","Overlock","Pacifico","Passion One","Permanent Marker",
+"Poppins","PT Sans","Quattrocento Sans","Quicksand","Rambla","Raleway",
+"Reggae One","Righteous","Roboto","Rubik","Satisfy","Shadows Into Light",
+"Sigmar One","Slabo 27px","Source Sans Pro","Staatliches","Sunflower",
+"Teko","Ubuntu","Varela Round","Vollkorn","Yeseva One","Zilla Slab",
+"Anton","Arizonia","Bebe Serif","Caesar Dressing","Dancing Script",
+"Fascinate","Francois One","Gochi Hand","Harmattan","Joan","Koulen",
+"Laila","Manjari","Megrim","Modak","NTR","Oxygen","PT Serif",
+"Philosopher","Playfair Display","Questrial","Red Hat Display","Sawarabi Mincho",
+"Shrikhand","Space Mono","Staatliches","Tajawal","Tinos","Ultra",
+"UnifrakturCook","Vampiro One","Work Sans","Yanone Kaffeesatz",
+"Zeyada","Epilogue","Eczar","Balthazar","Chivo Mono","DM Sans",
+"Edu NSW ACT Foundation","Fauna One","Hind Guntur","IBM Plex Sans",
+"Inter","JetBrains Mono","Lora","Nunito Sans","Open Sans","Oswald Stencil",
+"Padauk","Patua One","Poiret One","Proza Libre","Public Sans","Rajdhani",
+"Sacramento","Sarabun","Spectral","Syncopate","Tourney","TTHoves"
+];
+
+const symbols = [
+"꧁","꧂","★","✦","✧","✩","✪","✿","❖","⚡","☀","☆","➹","✰","☯","☁","🔥","☾",
+"❂","❃","❁","✺","✹","✸","✷","❄","❅","❆","✻","✼","✽","✾","❉","❊","⸢","⸣","⸤","⸥",
+"❮","❯","❪","❫","❬","❭","❨","❩","⌒","〜","◜","◝","◞","◟","❦","❧","☘","☄","⚛","⚜",
+"⚝","✤","✥","✦","✧","✪","✫","✬","✭","✮","✯","✰","✱","✲","✳","✴","✵","✶","✷","✸",
+"✹","✺","✻","✼","✽","✾","❀","❁","❂","❃","❄","❅","❆","❇","❈","❉","❊","❋","❌",
+"❎","❏","❐","❑","❒","❖","❘","❙","❚","❛","❜","❝","❞","❟","❠","❡","❢","❣","❤",
+"❥","❦","❧","☀","☁","☂","☃","☄","★","☆","☇","☈","☉","☊","☋","☌","☍","☎","☏","☑",
+"☒","☓","☔","☕","☖","☗","☘","☙","☚","☛","☜","☝","☞","☟","☠","☡","☢","☣","☤","☥",
+"☦","☧","☨","☩","☪","☫","☬","☭","☮","☯","☸","☹","☺","☻","☼","☽","☾","☿","♀","♂",
+"♁","♃","♄","♅","♆","♇","♈","♉","♊","♋","♌","♍","♎","♏","♐","♑","♒","♓","♔","♕",
+"♖","♗","♘","♙","♚","♛","♜","♝","♞","♟","♠","♡","♢","♣","♤","♥","♦","♧","♨","♩",
+"♪","♫","♬","♭","♮","♯","⚀","⚁","⚂","⚃","⚄","⚅","⚔","⚕","⚖","⚗","⚙","⚚","⚛","⚜",
+"⚝","⚞","⚟","⚠","⚡","⚢","⚣","⚤","⚥","⚦","⚧","⚨","⚩","⚪","⚫","⚬","⚭","⚮","⚯","⚰",
+"⚱","⚲","⚳","⚴","⚵","⚶","⚷","⚸","⚹","⚺","⚻","⚼","⚽","⚾","⚿","✁","✂","✃","✄","✆",
+"✇","✈","✉","✍","✎","✏","✐","✑","✒","✓","✔","✕","✖","✗","✘","✙","✚","✛","✜","✝",
+"✞","✟","✠","✡","✢","✣","✤","✥","✦","✧","✩","✪","✫","✬","✭","✮","✯","꧁","꧂","✰","✱","✲",
+"✳","✴","✵","✶","✷","✸","✹","✺","✻","✼","✽","✾","❀","❁","❂","❃","❄","❅","❆","❇",
+"❈","❉","❊","❋","⟐","⟁","⟑","⟒","⟓","⟔","⟕","⟖","⟗","⟘","⟙","⟚","⟛","⟜","⟝","⟞",
+"⟟","⟠","⟡","⟢","⟣","⟤","⟥","⟦","⟧","⟨","⟩","⟪","⟫","⟬","⟭","⟮","⟯","⦀","⦁","⦂",
+"⦃","⦄","⦅","⦆","⦇","⦈","⦉","⦊","⦋","⦌","⦍","⦎","⦏","⦐","⦑","⦒","⦓","⦔","⦕","⦖",
+"⦗","⦘","⦙","⦚","⦛","⦜","⦝","⦞","⦟","⦠","⦡","⦢","⦣","⦤","⦥","⦦","⦧","⦨","⦩","⦪"
+];
+const brackets = ["༺","༻","꧁","꧂",
+  "★", "✦", "✧", "✩", "✪", "♡", "✿", "❖", "⚡", "☀", "☆",
+  "💎", "💥", "🌀", "➹", "✰", "☯", "☁", "🔥", "☾",
+  "❁", "✿", "❀", "✺", "✹", "✷", "✸", "❂", "❃", "❄", 
+  "❇", "✵", "✶", "✷", "✸", "✹", "✺", "❉", "❊", "✻"
+];
+const connectors = ["_", "-", "~", "|", "•","×"];
+const proPrefixes = ["Legend","Shadow","Ghost","Dragon","Night","Fire","Master"];
+const proSuffixes = ["X","Pro","King","Wolf","Lord","Hero"];
+// ====== ANIME ======
+const anime = [
+  "Naruto","Sasuke","Sakura","Kakashi","Itachi","Goku","Vegeta","Gohan","Trunks","Frieza",
+  "Luffy","Zoro","Nami","Sanji","Usopp","Chopper","Robin","Franky","Brook","Jinbe",
+  "Killua","Gon","Kurapika","Leorio","Hisoka","Tanjiro","Nezuko","Zenitsu","Inosuke","Kanao",
+  "Levi","Eren","Mikasa","Armin","Historia","Reiner","Bertholdt","Jean","Saitama","Genos",
+  "Jotaro","Dio","Yugi","Kaiba","Light","L","Ichigo","Rukia","Orihime","Renji",
+  "Edward","Alphonse","Roy","Winry","Scar","KingBradley","Ling","Hohenheim"
+];
+
+// ====== MARVEL ======
+const marvel = [
+  "IronMan","SpiderMan","Thor","Hulk","CaptainAmerica","BlackWidow","Hawkeye","DoctorStrange","ScarletWitch","Vision",
+  "BlackPanther","AntMan","Wasp","StarLord","Gamora","Rocket","Groot","Drax","NickFury","Loki",
+  "Thanos","Wolverine","Deadpool","Magneto","ProfessorX","Storm","JeanGrey","Cyclops","Beast","Nightcrawler",
+  "Colossus","Iceman","Daredevil","Punisher","Elektra","SilverSurfer","Blade","CaptainMarvel","HankPym","Wiccan",
+  "Quicksilver","Hela","Valkyrie","Mysterio","Shuri","Falcon","WinterSoldier","MoonKnight","MsMarvel","Visionary"
+];
+
+// ====== DC ======
+const dc = [
+  "Batman","Superman","Flash","WonderWoman","Aquaman","Cyborg","GreenLantern","MartianManhunter","Shazam","Joker",
+  "HarleyQuinn","GreenArrow","Catwoman","Nightwing","Robin","Batgirl","Deathstroke","BlackAdam","DoctorFate","LexLuthor",
+  "Supergirl","Constantine","Raven","BeastBoy","Starfire","Sinestro","Bane","TwoFace","Penguin","Brainiac",
+  "BlackManta","PoisonIvy","KillerFrost","CaptainCold","GorillaGrodd","BlueBeetle","BoosterGold","Zatanna","Hawkman","Hawkgirl",
+  "WonderGirl","Cheetah","Deadshot","Riddler","Firestorm","Vixen","DoctorLight","CaptainAtom","Midnighter","Apollo"
+];
+const randomBase = ["Shadow","Ghost","Dragon","Night","Fire","Storm","Wolf"];
+
+// Plain/Styled toggle element
+const plainToggle = document.getElementById("plainStylish");
+const backBtn = document.getElementById("backToTop");
+window.addEventListener("scroll", () => {
+  backBtn.style.display = window.scrollY > 300 ? "block" : "none";
+});
+function showError(message){
+    const popup = document.getElementById("errorPopup");
+    popup.innerText = message;
+    popup.style.opacity = "1";
+    popup.style.transform = "translate(-50%, -50%) scale(1.2)";
+
+    setTimeout(() => popup.style.transform = "translate(-50%, -50%) scale(1)", 200);
+    setTimeout(() => {
+        popup.style.opacity = "0";
+        popup.style.transform = "translate(-50%, -50%) scale(0)";
+    }, 1500);
+}
+// ======================
+// COPY FUNCTION
+// ======================
+function copyText(text){
+    navigator.clipboard.writeText(text);
+    const popup = document.getElementById("copyPopup");
+    popup.innerText = `Copied: ${text}`;
+    popup.style.opacity = "1";
+    popup.style.transform = "translate(-50%, -50%) scale(1.2)";
+
+    setTimeout(() => popup.style.transform = "translate(-50%, -50%) scale(1)", 200);
+    setTimeout(() => {
+        popup.style.opacity = "0";
+        popup.style.transform = "translate(-50%, -50%) scale(0)";
+    }, 1200);
+}
+const sections = document.querySelectorAll("section");
+
+function revealSections() {
+  const triggerBottom = window.innerHeight / 1.2;
+
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    if(sectionTop < triggerBottom){
+      section.classList.add("show");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealSections);
+window.addEventListener("load", revealSections);
+// ======================
+// DISPLAY FUNCTION
+// ======================
+function displayNames(arr, container){
+    container.innerHTML = "";
+    const unique = [...new Set(arr)];
+    let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+    unique.forEach(name => {
+        const div = document.createElement("div");
+        div.style.display = "flex";
+        div.style.justifyContent = "space-between";
+        div.style.alignItems = "center";
+
+        // Name span
+        const span = document.createElement("span");
+        span.innerText = name;
+        span.style.cursor = "pointer";
+        if(!plainToggle.checked){
+            span.style.fontFamily = fonts[Math.floor(Math.random()*fonts.length)];
+        }
+        span.onclick = () => copyText(name);
+
+        // Copy button
+        const copyBtn = document.createElement("button");
+        copyBtn.className = "copy-btn";
+        copyBtn.innerText = "Copy";
+        copyBtn.onclick = () => copyText(name);
+
+        // Favorite button
+        const favBtn = document.createElement("button");
+        favBtn.className = "copy-btn";
+        favBtn.style.marginLeft = "5px";
+        
+        // Detect mobile screen
+        const isMobile = window.innerWidth <= 768;
+        const isFav = favorites.includes(name);
+        favBtn.innerHTML = isFav ? "⭐" : "☆"; // filled or empty star
+        favBtn.style.background = isFav ? "#ff4c00" : "#00ffe0";
+
+        favBtn.onclick = () => {
+            toggleFavoriteMobile(name, favBtn);
+        };
+
+        div.appendChild(span);
+        div.appendChild(copyBtn);
+        div.appendChild(favBtn);
+        container.appendChild(div);
+    });
+}
+
+// ======================
+// STYLISH GENERATOR
+// ======================
+function generateStylish(){
+    const name = document.getElementById("nameInput").value.trim();
+    if(!name) return showError("Please enter a name!"); // <-- replace alert
+
+    let styles = [];
+    if(plainToggle.checked){
+        styles.push(name, name.toUpperCase(), name.toLowerCase(), name.split("").join(" "), name.split("").reverse().join(""));
+    } else {
+        for(let i=0;i<50;i++){
+            const s = symbols[Math.floor(Math.random()*symbols.length)];
+            const b = brackets[Math.floor(Math.random()*brackets.length)];
+            styles.push(`${b}${s}${name}${s}${b}`);
+        }
+        styles.push(name, name.toUpperCase(), name.toLowerCase(), name.split("").join(" "), name.split("").reverse().join(""));
+    }
+
+    displayNames(styles, document.getElementById("outputStylish"));
+}
+// ======================
+// PRO GENERATOR
+// ======================
+function generatePro(){
+    const name = document.getElementById("proInput").value.trim();
+    if(!name) return showError("Please enter a name!"); //
+    let list = [];
+
+    if(plainToggle.checked){
+        list.push(name, name.toUpperCase(), name.toLowerCase());
+    } else {
+        proPrefixes.forEach(pre => {
+            proSuffixes.forEach(suf => {
+                list.push(`${pre}${name}${suf}`);
+            });
+        });
+    }
+
+    displayNames(list, document.getElementById("outputPro"));
+}
+
+// ======================
+// CUTE GENERATOR
+// ======================
+function generateCute(){
+    const name = document.getElementById("cuteInput").value.trim();
+     if(!name) return showError("Please enter a name!"); //
+    let cute = [];
+
+    if(plainToggle.checked){
+        cute.push(name, name.toUpperCase(), name.toLowerCase());
+    } else {
+        cute = [`♥${name}♥`, `${name}🐼`, `${name}🌸`, `☆${name}☆`, `${name}🍀`, `☀${name}`, `${name}💖`];
+    }
+
+    displayNames(cute, document.getElementById("outputCute"));
+}
+
+// ======================
+// RANDOM GENERATOR
+// ======================
+function generateRandom(){
+    let list = [];
+
+    for(let i=0;i<10;i++){
+        const name = randomBase[Math.floor(Math.random()*randomBase.length)];
+        if(plainToggle.checked){
+            list.push(name);
+        } else {
+            const s = symbols[Math.floor(Math.random()*symbols.length)];
+            const b = brackets[Math.floor(Math.random()*brackets.length)];
+            list.push(`${b}${s}${name}${s}${b}`);
+        }
+    }
+
+    displayNames(list, document.getElementById("outputRandom"));
+}
+
+// ======================
+// CATEGORY GENERATOR
+// ======================
+function generateCategory(list){
+    let result = [];
+    for(let i=0;i<5;i++){
+        const name = list[Math.floor(Math.random()*list.length)];
+        if(plainToggle.checked){
+            result.push(name);
+        } else {
+            const s = symbols[Math.floor(Math.random()*symbols.length)];
+            const b = brackets[Math.floor(Math.random()*brackets.length)];
+            result.push(`${b}${s}${name}${s}${b}`);
+        }
+    }
+
+    displayNames(result, document.getElementById("outputCategories"));
+}
+
+function generateRandomAnime(){ generateCategory(anime); }
+function generateRandomMarvel(){ generateCategory(marvel); }
+function generateRandomDC(){ generateCategory(dc); }
+
+
+function revealSections() {
+  const triggerBottom = window.innerHeight / 1.2;
+
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    if(sectionTop < triggerBottom){
+      section.classList.add("show");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealSections);
+window.addEventListener("load", revealSections);
+
+window.addEventListener("scroll", () => {
+  backBtn.style.display = window.scrollY > 300 ? "block" : "none";
+});
+function toggleMenu() {
+  const nav = document.querySelector("nav.nav-links");
+  nav.classList.toggle("show");
+
+  // Animate hamburger into X
+  const ham = document.querySelector(".hamburger");
+  ham.classList.toggle("active");
+}
+// MOBILE NAV TOGGLE
+function toggleMenu() {
+  const nav = document.querySelector("nav.nav-links");
+  const ham = document.querySelector(".hamburger");
+
+  ham.classList.toggle("active"); // animate hamburger
+  nav.classList.toggle("show");   // show/hide nav links
+}
+function addFavorite(name){
+    let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+    if(!favorites.includes(name)){
+        favorites.push(name);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        showPopup(`Added to Favorites: ${name}`);
+    } else {
+        showPopup(`${name} is already in Favorites!`);
+    }
+}
+function toggleFavorite(name, btn){
+    let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+    if(favorites.includes(name)){
+        favorites = favorites.filter(n => n !== name);
+        btn.style.background = "#00ffe0";
+        btn.innerHTML = "♡ Favorite";
+        showPopup(`Removed from Favorites: ${name}`);
+    } else {
+        favorites.push(name);
+        btn.style.background = "#ff4c00";
+        btn.innerHTML = "♥ Favorited";
+        showPopup(`Added to Favorites: ${name}`);
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+// Custom popup
+function showPopup(message){
+    let popup = document.getElementById("favPopup");
+    if(!popup){
+        popup = document.createElement("div");
+        popup.id = "favPopup";
+        popup.style.position = "fixed";
+        popup.style.top = "50%";
+        popup.style.left = "50%";
+        popup.style.transform = "translate(-50%, -50%) scale(0)";
+        popup.style.background = "rgba(20,20,30,0.95)";
+        popup.style.color = "#ff4c00";
+        popup.style.padding = "1rem 2rem";
+        popup.style.borderRadius = "20px";
+        popup.style.fontWeight = "bold";
+        popup.style.zIndex = "9999";
+        popup.style.textAlign = "center";
+        popup.style.boxShadow = "0 10px 30px rgba(255,76,0,0.6), 0 0 20px #ff0000 inset";
+        popup.style.transition = "transform 0.3s ease, opacity 0.3s ease";
+        document.body.appendChild(popup);
+    }
+
+    popup.innerText = message;
+    popup.style.opacity = "1";
+    popup.style.transform = "translate(-50%, -50%) scale(1.2)";
+
+    setTimeout(() => popup.style.transform = "translate(-50%, -50%) scale(1)", 200);
+    setTimeout(() => {
+        popup.style.opacity = "0";
+        popup.style.transform = "translate(-50%, -50%) scale(0)";
+    }, 1500);
+}
+function toggleFavoriteMobile(name, btn){
+    let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+    if(favorites.includes(name)){
+        favorites = favorites.filter(n => n !== name);
+        btn.innerHTML = "☆";
+        btn.style.background = "#00ffe0";
+        showPopup(`Removed from Favorites: ${name}`);
+    } else {
+        favorites.push(name);
+        btn.innerHTML = "⭐";
+        btn.style.background = "#ff4c00";
+        showPopup(`Added to Favorites: ${name}`);
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+</script>
+</body>
+</html>

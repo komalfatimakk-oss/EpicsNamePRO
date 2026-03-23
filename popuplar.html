@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Popular Names • Pro</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Russo+One&display=swap" rel="stylesheet">
+
+<style>
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* BODY */
+body {
+  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* NAVIGATION */
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #111;
+  box-shadow: 0 0 15px #ff4c00;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav h2 {
+  color: #ff4c00;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ff4c00;
+}
+
+/* TITLE */
+h1 {
+  margin: 2rem 0 1rem;
+  font-size: 2rem;
+  color: #ff4c00;
+  text-shadow: 0 0 20px #ff4c00;
+  text-align: center;
+}
+
+/* SEARCH */
+.search {
+  padding: 12px 15px;
+  border-radius: 25px;
+  border: 2px solid #ff4c00;
+  background: #111;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  width: 250px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.search:focus {
+  box-shadow: 0 0 15px #ff4c00;
+  border-color: #ff4c00;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab {
+  padding: 8px 20px;
+  border-radius: 25px;
+  background: #111;
+  cursor: pointer;
+  border: 1px solid #333;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.tab.active {
+  background: linear-gradient(45deg, #ff4c00, #ff9a00);
+  color: #000;
+  box-shadow: 0 0 15px #ff4c00;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  width: 90%;
+  max-width: 1000px;
+  margin-bottom: 3rem;
+}
+
+/* CARD */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  padding: 1.5rem 1rem;
+  border-radius: 20px;
+  text-align: center;
+  transition: 0.4s;
+  cursor: pointer;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-7px) scale(1.02);
+  box-shadow: 0 0 25px #ff4c00;
+}
+
+/* NAME */
+.name {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+/* COPY BUTTON */
+.copy-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(45deg, #ff4c00, #ff9a00);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.copy-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #ff9a00;
+}
+
+/* POPUP */
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: #111;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  color: #ff4c00;
+  font-weight: bold;
+  box-shadow: 0 0 20px #ff4c00;
+  z-index: 200;
+  transition: transform 0.3s ease;
+}
+</style>
+ <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>EpicNamesPro - Stylish & Pro Name Generator</title>
+  <meta name="description" content="EpicNamesPro - Generate stylish, pro, cute, and random names for YouTube, games, and social media. Easy, fast, and fun!">
+  <meta name="keywords" content="stylish names, pro names, cute names, random names, YouTuber names, name generator, EpicNamesPro">
+  <meta name="author" content="Your Name">
+</head>
+
+<body>
+
+<nav>
+  <h2>🔥 Name Hub</h2>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="youtuber.html">YouTuber</a></li>
+  </ul>
+</nav>
+
+<h1>🔥 Trending Gamer Names</h1>
+
+<input class="search" id="search" placeholder="Search name...">
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('all', this)">All</div>
+  <div class="tab" onclick="switchTab('ff', this)">Free Fire</div>
+  <div class="tab" onclick="switchTab('pubg', this)">PUBG</div>
+  <div class="tab" onclick="switchTab('hacker', this)">Hacker</div>
+  <div class="tab" onclick="switchTab('valorant', this)">Valorant</div>
+<div class="tab" onclick="switchTab('cod', this)">COD</div>
+<div class="tab" onclick="switchTab('fortnite', this)">Fortnite</div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div id="popup">Copied!</div>
+
+<script>
+const data = {
+  all: [
+    "★ ShadowX ★","⚡ DarkHunter ⚡","☯ KillerOP ☯","🔥 ProSniper 🔥",
+    "✦ GhostRider ✦","★ DeathZone ★","⚡ StormBreaker ⚡","☠ NightFury ☠",
+    "✪ BlazeMaster ✪","⚡ ThunderBolt ⚡","★ VenomStrike ★","🔥 InfernoKing 🔥",
+    "☯ SilentReaper ☯","✦ PhantomX ✦","★ IceWolf ★","⚡ DragonFist ⚡",
+    "🔥 FireHawk 🔥","☠ DoomSlayer ☠","★ AlphaRogue ★","✦ StealthNinja ✦",
+    "⚡ CyberKnight ⚡","★ BloodMoon ★","☯ ToxicViper ☯","🔥 EliteSniper 🔥"
+  ],
+  ff: [
+    "🔥 FF King 🔥","⚡ Headshot FF ⚡","★ BooyahPro ★","☯ FF Killer ☯",
+    "✦ FlameFF ✦","★ DiamondFF ★","⚡ RapidFireFF ⚡","☠ NightHunterFF ☠",
+    "🔥 GhostFF 🔥","★ SniperProFF ★"
+  ],
+  pubg: [
+    "⚡ PUBG Sniper ⚡","★ ChickenWinner ★","🔥 PUBG Beast 🔥","☯ ZoneMaster ☯",
+    "✦ QuickScope PUBG ✦","★ VictoryPUBG ★","⚡ SquadLeader ⚡","☠ HeadshotKing ☠",
+    "🔥 CrownSniper 🔥","★ DesertStorm ★"
+  ],
+  hacker: [
+    "☠ RootX ☠","⚡ NullByte ⚡","★ CyberGhost ★","☯ DarkCode ☯",
+    "✦ ShadowHack ✦","★ CrypticX ★","⚡ BlackHat ⚡","☠ ZeroDay ☠",
+    "🔥 CodePhantom 🔥","★ TerminalX ★"
+  ],
+    cod: [
+    "★ COD Sniper ★","⚡ GhostCOD ⚡","🔥 COD King 🔥","☯ BlackOps ☯",
+    "✦ DeadShot ✦","★ WarZoneX ★","⚡ RapidFire COD ⚡","☠ NightOps ☠",
+    "★ KillStreak ★","🔥 TacticalPro 🔥","✦ StealthStrike ✦","★ COD Phantom ★",
+    "⚡ SniperElite ⚡","☯ ShadowOps ☯","🔥 HeadshotMaster 🔥"
+  ],
+  fortnite: [
+    "★ FortniteKing ★","⚡ VictoryRoyale ⚡","🔥 NinjaStorm 🔥","☯ TiltedPro ☯",
+    "✦ BattleMaster ✦","★ LootLegend ★","⚡ RampRush ⚡","☠ EpicSniper ☠",
+    "★ FortniteAce ★","🔥 StormSurvivor 🔥","✦ BuildBlaze ✦","★ ShadowSkins ★",
+    "⚡ QuickScopeFN ⚡","☯ LootLooter ☯","🔥 RoyaleRuler 🔥"
+  ]
+,
+  valorant: [
+"★ PhantomAce ★","⚡ ViperStrike ⚡","☯ SageMaster ☯","🔥 JettFlash 🔥",
+"✦ ReynaX ✦","★ CypherSpy ★","⚡ OmenShade ⚡","☠ KillJoy ☠","★ RazeBoom ★","🔥 SovaArrow 🔥",
+"✦ PhoenixBlaze ✦","★ VandalKing ★","⚡ OperatorPro ⚡","☯ AstraX ☯","🔥 NeonRush 🔥"
+]
+};
+
+let current = "all";
+const grid = document.getElementById("grid");
+const popup = document.getElementById("popup");
+const search = document.getElementById("search");
+
+function render(){
+  grid.innerHTML = "";
+  let list = data[current];
+
+  const query = search.value.toLowerCase();
+  list = list.filter(n => n.toLowerCase().includes(query));
+
+  list.forEach(name => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const title = document.createElement("div");
+    title.className = "name";
+    title.innerText = name;
+
+    const btn = document.createElement("button");
+    btn.className = "copy-btn";
+    btn.innerText = "Copy";
+
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      navigator.clipboard.writeText(name);
+      showPopup(name);
+    };
+
+    card.onclick = () => btn.click();
+
+    card.appendChild(title);
+    card.appendChild(btn);
+    grid.appendChild(card);
+  });
+}
+
+function switchTab(tab, el){
+  current = tab;
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  el.classList.add("active");
+  render();
+}
+
+search.addEventListener("input", render);
+
+function showPopup(text){
+  popup.innerText = "Copied: " + text;
+  popup.style.transform = "translate(-50%, -50%) scale(1.2)";
+  setTimeout(() => {
+    popup.style.transform = "translate(-50%, -50%) scale(0)";
+  }, 1200);
+}
+
+render();
+// Add to favorites
+function addFavorite(name){
+  let favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+  if(!favs.includes(name)) favs.push(name);
+  localStorage.setItem('favorites', JSON.stringify(favs));
+  showPopup(`Added to Favorites: ${name}`);
+}
+</script>
+
+</body>
+</html>

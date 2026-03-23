@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Favorites • EpicNames Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===============================
+   GLOBAL STYLES
+   =============================== */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a, #111111);
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* ===============================
+   NAVBAR
+   =============================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(20,20,30,0.9);
+    padding: 1rem 2rem;
+    box-shadow: 0 5px 15px rgba(255,76,0,0.5), 0 0 10px #ff0000 inset;
+}
+
+.navbar h2 {
+    color: #ff4c00;
+    font-size: 1.8rem;
+    text-shadow: 0 0 5px #ff4c00, 0 0 15px #ff0000;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #ff4c00, #ff0000);
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(255,76,0,0.6), 0 0 10px #ff0000 inset;
+    transition: all 0.3s ease, transform 0.2s ease;
+}
+
+.navbar a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(255,76,0,0.8), 0 0 15px #ff0000 inset;
+}
+
+/* ===============================
+   HEADER
+   =============================== */
+h1 {
+    color: #ff4c00;
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    text-shadow: 0 0 10px #ff4c00, 0 0 20px #ff0000;
+}
+
+/* ===============================
+   FAVORITE CARDS
+   =============================== */
+#favList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 2rem 2rem;
+}
+
+.card {
+    background: rgba(30,30,40,0.95);
+    padding: 1rem 1.5rem;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(255,76,0,0.4), 0 0 15px #ff0000 inset;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(255,76,0,0.7), 0 0 20px #ff0000 inset;
+}
+
+.card span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-shadow: 0 0 5px #ff4c00;
+    cursor: pointer;
+}
+
+.copy-btn, .remove-btn {
+    background: linear-gradient(135deg, #ff4c00, #ff0000);
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease, transform 0.2s ease;
+    margin-left: 0.5rem;
+}
+
+.copy-btn:hover, .remove-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 5px 15px rgba(255,0,0,0.7), 0 0 10px #ff4c00 inset;
+}
+
+.empty-msg {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-top: 2rem;
+    font-style: italic;
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+@media(max-width: 600px){
+    .card {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+    .copy-btn, .remove-btn {
+        width: 100%;
+    }
+}
+</style>
+ <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>EpicNamesPro - Stylish & Pro Name Generator</title>
+  <meta name="description" content="EpicNamesPro - Generate stylish, pro, cute, and random names for YouTube, games, and social media. Easy, fast, and fun!">
+  <meta name="keywords" content="stylish names, pro names, cute names, random names, YouTuber names, name generator, EpicNamesPro">
+  <meta name="author" content="Your Name">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>EpicNames Pro</h2>
+    <a href="index.html">⬅ Back</a>
+</div>
+
+<h1>💖 Favorite Names</h1>
+<div id="favList"></div>
+
+<script>
+function loadFavorites(){
+    const favList = document.getElementById("favList");
+    favList.innerHTML = ""; // clear existing
+
+    let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+    if(favorites.length === 0){
+        favList.innerHTML = '<p class="empty-msg">No favorites yet! Go back and add some names.</p>';
+        return;
+    }
+
+    favorites.forEach(name => {
+        const div = document.createElement("div");
+        div.className = "card";
+
+        const span = document.createElement("span");
+        span.innerText = name;
+        span.title = "Click to copy";
+        span.onclick = () => copyName(name);
+
+        const copyBtn = document.createElement("button");
+        copyBtn.className = "copy-btn";
+        copyBtn.innerText = "Copy";
+        copyBtn.onclick = () => copyName(name);
+
+        const removeBtn = document.createElement("button");
+        removeBtn.className = "remove-btn";
+        removeBtn.innerText = "Remove";
+        removeBtn.onclick = () => {
+            favorites = favorites.filter(n => n !== name);
+            localStorage.setItem("favorites", JSON.stringify(favorites));
+            loadFavorites();
+        };
+
+        div.appendChild(span);
+        div.appendChild(copyBtn);
+        div.appendChild(removeBtn);
+        favList.appendChild(div);
+    });
+}
+
+function copyName(name){
+    navigator.clipboard.writeText(name);
+    const popup = document.createElement("div");
+    popup.innerText = `Copied: ${name}`;
+    popup.style.position = "fixed";
+    popup.style.top = "50%";
+    popup.style.left = "50%";
+    popup.style.transform = "translate(-50%, -50%) scale(0)";
+    popup.style.background = "rgba(20,20,30,0.95)";
+    popup.style.color = "#ff4c00";
+    popup.style.padding = "1rem 2rem";
+    popup.style.borderRadius = "20px";
+    popup.style.fontWeight = "bold";
+    popup.style.zIndex = "9999";
+    popup.style.textAlign = "center";
+    popup.style.boxShadow = "0 10px 30px rgba(255,76,0,0.6), 0 0 20px #ff0000 inset";
+    popup.style.transition = "transform 0.3s ease, opacity 0.3s ease";
+    document.body.appendChild(popup);
+
+    setTimeout(()=> popup.style.transform = "translate(-50%, -50%) scale(1.2)", 50);
+    setTimeout(()=> popup.style.transform = "translate(-50%, -50%) scale(1)", 250);
+    setTimeout(()=> {
+        popup.style.opacity = "0";
+        popup.style.transform = "translate(-50%, -50%) scale(0)";
+    }, 1500);
+    setTimeout(()=> popup.remove(), 1800);
+}
+
+loadFavorites();
+</script>
+</body>
+</html>
